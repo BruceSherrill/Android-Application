@@ -3,7 +3,10 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/Sherr/AndroidStudioProjects/MyFirstApplication/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/Sherr/AndroidStudioProjects/MyFirstApplication/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/Users/Sherr/AndroidStudioProjects/MyFirstApplication/app/src/main/res/layout/fragment_current_conditions.xml" value="0.12310030395136778" />
+        <entry key="..\:/Users/Sherr/AndroidStudioProjects/MyFirstApplication/app/src/main/res/layout/fragment_forecast.xml" value="0.1" />
+        <entry key="..\:/Users/Sherr/AndroidStudioProjects/MyFirstApplication/app/src/main/res/layout/view_forecast_item.xml" value="0.33" />
       </map>
     </option>
   </component>
