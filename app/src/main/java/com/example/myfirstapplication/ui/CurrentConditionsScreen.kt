@@ -20,6 +20,7 @@ import androidx.compose.ui.unit.sp
 import com.example.myfirstapplication.R
 
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun CurrentConditions(
     onForecastButtonClick: () -> Unit,
@@ -31,74 +32,86 @@ fun CurrentConditions(
 //        CurrentConditionsContent {
 //        }
 //    }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(id = R.string.app_name))
+                },
+                navigationIcon = {
+                },
 
-
-    Column(
-        modifier = Modifier.padding(16.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-        Text(
-            modifier = Modifier.padding(top = 16.dp),
-            text = stringResource(id = R.string.city_name),
-            style = TextStyle(
-                fontSize = 24.sp,
-                fontWeight = FontWeight(400)
             )
-        )
+        }, content = {
 
-        Spacer(modifier = Modifier.height(14.dp))
-
-        Row(
-            modifier = Modifier.padding(16.dp),
-            verticalAlignment = Alignment.CenterVertically,
-        ) {
             Column(
+                modifier = Modifier.padding(16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = stringResource(id = R.string.current_temp),
+                    modifier = Modifier.padding(top = 16.dp),
+                    text = stringResource(id = R.string.city_name),
                     style = TextStyle(
-                        fontSize = 72.sp,
+                        fontSize = 24.sp,
                         fontWeight = FontWeight(400)
                     )
                 )
-                Text(
-                    stringResource(id = R.string.feels_like_temp, 80),
-                    style = TextStyle(
-                        fontSize = 14.sp
+
+                Spacer(modifier = Modifier.height(14.dp))
+
+                Row(
+                    modifier = Modifier.padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    Column(
+                        horizontalAlignment = Alignment.CenterHorizontally
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.current_temp),
+                            style = TextStyle(
+                                fontSize = 72.sp,
+                                fontWeight = FontWeight(400)
+                            )
+                        )
+                        Text(
+                            stringResource(id = R.string.feels_like_temp, 80),
+                            style = TextStyle(
+                                fontSize = 14.sp
+                            )
+                        )
+                    }
+                    Spacer(modifier = Modifier.weight(1.0f, true))
+                    Image(
+                        modifier = Modifier
+                            .size(72.dp),
+                        painter = painterResource(id = R.drawable.sun_icon),
+                        contentDescription = "Sunny",
                     )
-                )
+                }
+                Spacer(modifier = Modifier.height(14.dp))
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp)
+                ) {
+                    val textStyle = TextStyle(
+                        fontSize = 16.sp
+                    )
+                    Text(stringResource(id = R.string.low_temp, 60), style = textStyle)
+                    Text(stringResource(id = R.string.high_temp, 90), style = textStyle)
+                    Text(stringResource(id = R.string.humidity, 50), style = textStyle)
+                    Text(stringResource(id = R.string.pressure, 80), style = textStyle)
+                }
+
+                Spacer(modifier = Modifier.height(72.dp))
+                Button(onClick = onForecastButtonClick) {
+                    Text(text = stringResource(id = R.string.forecast))
+                }
+
             }
-            Spacer(modifier = Modifier.weight(1.0f, true))
-            Image(
-                modifier = Modifier
-                    .size(72.dp),
-                painter = painterResource(id = R.drawable.sun_icon),
-                contentDescription = "Sunny",
-            )
-        }
-        Spacer(modifier = Modifier.height(14.dp))
-        Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(horizontal = 16.dp)
-        ) {
-            val textStyle = TextStyle(
-                fontSize = 16.sp
-            )
-            Text(stringResource(id = R.string.low_temp, 60), style = textStyle)
-            Text(stringResource(id = R.string.high_temp, 90), style = textStyle)
-            Text(stringResource(id = R.string.humidity, 50), style = textStyle)
-            Text(stringResource(id = R.string.pressure, 80), style = textStyle)
-        }
-
-        Spacer(modifier = Modifier.height(72.dp))
-        Button(onClick = onForecastButtonClick) {
-            Text(text = stringResource(id = R.string.forecast))
-        }
-
-    }
+        })
 }
+
 //@Composable
 //private fun CurrentConditionsContent(
 //    onForecastButtonClick: () -> Unit,

@@ -1,5 +1,6 @@
 package com.example.myfirstapplication.ui
 //126:37 most recent video
+import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -7,6 +8,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -40,6 +42,7 @@ val ForecastData = (0 until 16).map {
         humidity = 76,
         )
 }
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ForecastScreen(){
 //    Scaffold(
@@ -47,12 +50,23 @@ fun ForecastScreen(){
 //    ) {
 //        // Content goes here
 //    }
+    Scaffold(
+        topBar = {
+            TopAppBar(
+                title = {
+                    Text(text = stringResource(id = R.string.forecast))
+                },
+                navigationIcon = {
+                },
 
-    LazyColumn{
-        items(items = ForecastData) { item: DayForecast ->
-            ForecastRow(item = item)
-        }
-    }
+                )
+        }, content = {
+            LazyColumn {
+                items(items = ForecastData) { item: DayForecast ->
+                    ForecastRow(item = item)
+                }
+            }
+        })
 }
 
 @Composable
