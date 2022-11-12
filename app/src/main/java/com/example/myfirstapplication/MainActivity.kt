@@ -10,7 +10,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.myfirstapplication.ui.CurrentConditions
 import com.example.myfirstapplication.ui.ForecastScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,9 +30,5 @@ class MainActivity : ComponentActivity() {
                 }
             }
         }
-    }
-
-    companion object{
-        private const val TAG = "MainActivity"
     }
 }
