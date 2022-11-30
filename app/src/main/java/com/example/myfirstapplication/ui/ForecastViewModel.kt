@@ -2,6 +2,7 @@ package com.example.myfirstapplication.ui
 
 import androidx.lifecycle.ViewModel
 import com.example.myfirstapplication.models.DayForecast
+import com.example.myfirstapplication.models.LatitudeLongitude
 import com.example.myfirstapplication.service.OpenWeatherMapApi
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -20,4 +21,11 @@ class ForecastViewModel @Inject constructor(private val api: OpenWeatherMapApi):
         val dayForecast = api.getForecast("55125")
         _dayForecast.trySend(dayForecast)
     }
+
+    fun fetchCurrentLocationData(latitudeLongitude: LatitudeLongitude) = runBlocking {
+        val dayForecast = api.getForecast(latitudeLongitude.latitude, latitudeLongitude.longitude)
+        _dayForecast.trySend(dayForecast)
+    }
+
+
 }
