@@ -21,6 +21,7 @@ import coil.compose.AsyncImage
 import com.example.myfirstapplication.R
 import com.example.myfirstapplication.models.DayForecast
 import com.example.myfirstapplication.models.DayForecastList
+import com.example.myfirstapplication.models.LatitudeLongitude
 import com.example.myfirstapplication.toHourMinute
 import com.example.myfirstapplication.toMonthDay
 
@@ -28,12 +29,17 @@ import com.example.myfirstapplication.toMonthDay
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun ForecastScreen(
+    latitudeLongitude: LatitudeLongitude?,
     viewModel: ForecastViewModel = hiltViewModel(),
     ) {
     val state by viewModel.dayForecast.collectAsState(null)
 
     LaunchedEffect(Unit){
-        viewModel.fetchData()
+        latitudeLongitude?.let {
+            viewModel.fetchCurrentLocationData(latitudeLongitude)
+        }
+
+        viewModel.fetchData()                //fetches data from api
     }
     Scaffold(
         topBar = { Appbar(title = stringResource(id = R.string.forecast)) },
